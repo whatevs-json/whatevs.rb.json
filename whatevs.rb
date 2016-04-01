@@ -34,7 +34,9 @@ def make_whatev(with_dict, type, depth_limit)
     whatev = {}
 
     # control our chance of making subwhatevs in terms of the depth_limit
-    counter = depth_limit
+    # add the +1 to make sure that counter is never 1 (i.e. there is always a
+    # chance for a subwhatev)
+    counter = depth_limit / 2 + 1
 
     # 1/counter chance we make a sub-whatev, low chance we step on our own toes and
     # overwrite something
@@ -47,7 +49,8 @@ def make_whatev(with_dict, type, depth_limit)
     whatev = []
 
     # control our chance of making subwhatevs in terms of the depth_limit
-    counter = depth_limit
+    # done as above
+    counter = depth_limit / 2 + 1
 
     # append until we miss on a 1/counter chance
     while rand(counter) > 0
