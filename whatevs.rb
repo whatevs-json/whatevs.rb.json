@@ -65,5 +65,28 @@ def make_whatev(with_dict, type, depth_limit)
   return whatev
 end
 
+def print_whatev thewhatev
+  outstyle = rand(25)
+  # print as a raw hash. Ew
+  if outstyle == 0
+    puts thewhatev.to_s
+  # print out hash contents as json, or maybe the empty string. Also Ew
+  elsif outstyle == 1
+    thewhatev.each_pair do |key, val|
+      puts val.to_json.to_s
+    end
+  # print out hash values as json elements of an array. Also Ew
+  elsif outstyle == 2
+    tempwhatev = []
+    thewhatev.each_pair do |key, val|
+      tempwhatev << val
+    end
+    puts tempwhatev.to_json.to_s
+  # regular JSON whatev printing
+  else
+    puts thewhatev.to_json.to_s
+  end
+end
 
-puts make_whatev(true, :hash, 10).to_json.to_s
+
+print_whatev make_whatev(true, :hash, 10)
